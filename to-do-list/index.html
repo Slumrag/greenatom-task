@@ -1,33 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script type="module" src="./scripts/app.js"></script>
+  </head>
 
-<body>
-    <header>
-        <h1>ToDo List</h1>
+  <body>
+    <header class="header">
+      <h1 class="header__title">ToDo List</h1>
     </header>
 
-    <main>
-        <form autocomplete="off">
-            <label>
-                <input id="new-todo" name="todo" type="text" placeholder="new todo" />
-            </label>
-            <select id="user-todo" name="user">
-                <option disabled selected>select user</option>
-            </select>
-            <button>Add Todo</button>
+    <main class="">
+      <div class="container todo">
+        <form class="todo__add" autocomplete="off">
+          <input class="todo__task" id="new-todo" name="todo" type="text" placeholder="new todo" />
+          <select class="todo__user" id="user-todo" name="user">
+            <option disabled selected>select user</option>
+          </select>
+          <button class="button add-todo__submit">Add Todo</button>
         </form>
-        <ul id="todo-list"></ul>
-    </main>
-    
-    <script src="app.js"></script>
-</body>
 
+        <ul class="todo__list list" id="todo-list">
+          <li class="list__item todo-item">
+            <input
+              class="checkbox"
+              type="checkbox"
+              name="to-do-check"
+              id=""
+              class="todo-item__check"
+            />
+            <p class="todo-item__text">dsf</p>
+            <p class="todo-item__user">dsfsd</p>
+            <button class="todo-item__delete close" title="remove from list">x</button>
+          </li>
+          <li class="list__item todo-item">
+            <input
+              class="checkbox"
+              type="checkbox"
+              name="to-do-check"
+              id=""
+              class="todo-item__check"
+            />
+            <p class="todo-item__text">dsf</p>
+            <p class="todo-item__user">dsfsd</p>
+            <button class="todo-item__delete close" title="remove from list">x</button>
+          </li>
+        </ul>
+      </div>
+    </main>
+  </body>
 </html>
