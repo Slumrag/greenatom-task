@@ -1,0 +1,17 @@
+export function renderUsers(users, optionsContainer) {
+  for (const key in users) {
+    if (!Object.hasOwnProperty.call(users, key)) {
+      return;
+    }
+    const user = { id: [key], ...users[key] };
+    // console.log(user);
+    const userOption = createUserOption(user);
+    optionsContainer?.append(userOption);
+  }
+}
+function createUserOption(user) {
+  const optionItem = document.createElement('option');
+  optionItem.value = user?.id;
+  optionItem.text = `${user?.name}`;
+  return optionItem;
+}
