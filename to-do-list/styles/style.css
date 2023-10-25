@@ -1,4 +1,5 @@
 @import url(./common.css);
+@import url(./animations.css);
 .todo {
   display: flex;
   flex-direction: column;
@@ -56,4 +57,7 @@
 }
 .close:hover {
   color: tomato;
+}
+.pending {
+  animation: pulse 1s ease-in infinite;
 }

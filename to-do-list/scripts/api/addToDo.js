@@ -12,7 +12,7 @@ export async function addToDo(toDo) {
     },
   });
   if (!response.ok) {
-    throw new Error(`Can't add item to list Status code ${response.status}`);
+    throw new Error(`Can't add item to list. Status code ${response.status}`);
   }
   return response;
 }
