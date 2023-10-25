@@ -2,8 +2,7 @@ export async function changeToDo(toDo) {
   const toDoURI = new URL('https://jsonplaceholder.typicode.com/todos/');
   toDoURI.pathname = toDoURI.pathname + toDo.id;
   const body = {
-    complete: toDo.complete,
-    body: '',
+    completed: toDo.completed,
   };
   console.log(toDoURI);
   const checkbox = document.getElementById(toDo.id);
@@ -18,5 +17,6 @@ export async function changeToDo(toDo) {
   if (!response.ok) {
     throw new Error(`Can't change item in list. Status code ${response.status}`);
   }
-  return body;
+  const data = await response.json();
+  return data;
 }

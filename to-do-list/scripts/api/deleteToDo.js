@@ -10,8 +10,10 @@ export async function deleteToDo(toDo) {
       'Content-type': 'application/json; charset=UTF-8',
     },
   });
+
   if (!response.ok) {
     throw new Error(`Can't delete item in list. Status code ${response.status}`);
   }
-  return response;
+  const data = await response.json();
+  return data;
 }

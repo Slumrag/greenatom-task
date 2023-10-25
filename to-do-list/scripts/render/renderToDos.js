@@ -1,7 +1,8 @@
 export function renderToDos(toDoArray, listContainer) {
-  while (listContainer.children > 0) {
-    listContainer.removeChild(listContainer.firstChild);
-  }
+  // console.log(listContainer.children.length);
+  // while (listContainer.children.length > 0) {
+  //   listContainer.firstChild.remove();
+  // }
   if (toDoArray.length === 0) {
     const placeholderElement = document.createElement('li');
     placeholderElement.classList.add('placeholder-item');
@@ -17,7 +18,7 @@ export function renderToDos(toDoArray, listContainer) {
   });
 }
 
-function createToDoElement(toDOItem) {
+export function createToDoElement(toDOItem) {
   const toDoElement = document.createElement('li');
   toDoElement.className = 'list__item todo-item';
   toDoElement.innerHTML = ` <input

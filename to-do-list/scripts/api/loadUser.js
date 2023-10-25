@@ -1,8 +1,9 @@
-export async function loadToDos(page) {
-  const toDoURI = new URL('https://jsonplaceholder.typicode.com/todos/');
+export async function loadUser(userId) {
+  const toDoURI = new URL('https://jsonplaceholder.typicode.com/users/');
+  toDoURI.pathname += userId;
   const response = await fetch(toDoURI, { method: 'GET' });
   if (!response.ok) {
-    const badResponseMsg = `Can't load to do list. Status code ${response.status}`;
+    const badResponseMsg = `Can't user id: ${userId}. Status code ${response.status}`;
     // alert(badResponseMsg);
     const error = new Error(badResponseMsg);
     throw error;

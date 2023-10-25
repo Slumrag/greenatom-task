@@ -1,7 +1,7 @@
 export function renderUsers(users, optionsContainer) {
-  while (optionsContainer.lastChild.value === 0) {
-    optionsContainer.removeChild(optionsContainer.lastChild);
-  }
+  // while (optionsContainer.lastChild.value === 0) {
+  //   optionsContainer.lastChild.remove();
+  // }
   for (const key in users) {
     if (!Object.hasOwnProperty.call(users, key)) {
       return;

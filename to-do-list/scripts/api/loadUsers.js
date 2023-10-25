@@ -1,7 +1,7 @@
 import { groupArrayBy } from '../utils/groupArrayBy.js';
 
 export async function loadUsers(params) {
-  const usersURI = new URL('https://jsonplaceholder.typicode.com/users');
+  const usersURI = new URL('https://jsonplaceholder.typicode.com/users/');
   const response = await fetch(usersURI, { method: 'GET' });
   if (!response.ok) {
     const badResponseMsg = `Can't load users. Status code ${response.status}`;
