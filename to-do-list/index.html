@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <header class="header">
+    <header class="header" id="top" >
       <h1 class="header__title">ToDo List</h1>
     </header>
 
@@ -33,9 +33,15 @@
           <button class="button add-todo__submit" type="submit" disabled>Add Todo</button>
         </form>
 
+
         <ul class="todo__list list" id="todo-list">
           <li class="placeholder-item">no items in todo list</li>
         </ul>
+        <div id="bottom"></div>
+        <div class="anchor-container">
+          <a class="anchor" href="#top" >↑</a>
+           <a class="anchor" href="#bottom" ">↓</a>
+        </div>
       </div>
     </main>
   </body>
