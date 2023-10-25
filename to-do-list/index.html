@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script type="module" src="./scripts/app.js"></script>
+  </head>
+
+  <body>
+    <header class="header" id="top" >
+      <h1 class="header__title">ToDo List</h1>
+    </header>
+
+    <main class="">
+      <div class="container todo">
+        <form class="todo__add" autocomplete="off" method="post">
+          <input
+            class="todo__task"
+            id="new-todo"
+            name="todo-title"
+            type="text"
+            placeholder="new todo"
+            required
+            minlength="1"
+            maxlength="25"
+          />
+          <select class="todo__user" id="user-todo" name="todo-user" required>
+            <option disabled selected value="0">select user</option>
+          </select>
+          <button class="button add-todo__submit" type="submit" disabled>Add Todo</button>
+        </form>
+
+
+        <ul class="todo__list list" id="todo-list">
+          <li class="placeholder-item">no items in todo list</li>
+        </ul>
+        <div id="bottom"></div>
+        <div class="anchor-container">
+          <a class="anchor" href="#top" >↑</a>
+           <a class="anchor" href="#bottom" ">↓</a>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
