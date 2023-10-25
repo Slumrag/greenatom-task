@@ -1,3 +1,4 @@
+import { addToDo } from './api/addToDo.js';
 import { loadToDos } from './api/loadToDos.js';
 import { loadUsers } from './api/loadUsers.js';
 import { renderToDos } from './render/renderToDos.js';
@@ -8,15 +9,43 @@ if (!navigator.onLine) {
 }
 const optionsContainer = document.querySelector('#user-todo');
 const listContainer = document.querySelector('#todo-list');
+const addForm = document.querySelector('.todo__add');
 
-Promise.all([loadUsers(), loadToDos()])
-  .then((data) => {
-    const users = data[0];
-    const toDos = data[1].map((el) => ({ ...el, name: users[el.userId].name }));
-    // console.table(toDos);
+document.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!e.target.closest('.todo__add')) return;
+  const form = e.target;
+  const submitButton = e.submitter;
+  const title = form['todo-title'].value;
+  const userId = form['todo-user'].value;
+  // console.log({ title, userId }, submitButton);
 
-    listContainer.removeChild(document.querySelector('.placeholder-item'));
-    renderUsers(users, optionsContainer);
-    renderToDos(toDos, listContainer);
-  })
+  addToDo({ title, userId })
+    .then((resp) => console.log(resp))
+    .catch((err) => alert(err));
+});
+// enable submit on valid form
+document.addEventListener('input', (e) => {
+  if (!e.target.closest('.todo__add')) return;
+  const submitButton = addForm.querySelector('[type="submit"]');
+  const title = addForm['todo-title'];
+  const userId = addForm['todo-user'];
+  const isValid = title.checkValidity() && +userId.value !== 0;
+  submitButton.disabled = !isValid;
+});
+loadData()
+  .then(renderData)
   .catch((er) => alert(er));
+async function loadData() {
+  const users = await loadUsers();
+  const toDos = await loadToDos();
+  const data = {};
+  data.users = users;
+  data.toDos = toDos.map((el) => ({ ...el, name: users[el.userId].name }));
+  return data;
+}
+function renderData({ users, toDos }) {
+  // console.table(toDos);
+  renderUsers(users, optionsContainer);
+  renderToDos(toDos, listContainer);
+}

@@ -16,12 +16,21 @@
 
     <main class="">
       <div class="container todo">
-        <form class="todo__add" autocomplete="off">
-          <input class="todo__task" id="new-todo" name="todo" type="text" placeholder="new todo" />
-          <select class="todo__user" id="user-todo" name="user">
-            <option disabled selected>select user</option>
+        <form class="todo__add" autocomplete="off" method="post">
+          <input
+            class="todo__task"
+            id="new-todo"
+            name="todo-title"
+            type="text"
+            placeholder="new todo"
+            required
+            minlength="1"
+            maxlength="25"
+          />
+          <select class="todo__user" id="user-todo" name="todo-user" required>
+            <option disabled selected value="0">select user</option>
           </select>
-          <button class="button add-todo__submit">Add Todo</button>
+          <button class="button add-todo__submit" type="submit" disabled>Add Todo</button>
         </form>
 
         <ul class="todo__list list" id="todo-list">

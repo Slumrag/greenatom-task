@@ -1,4 +1,16 @@
 export function renderToDos(toDoArray, listContainer) {
+  while (listContainer.children > 0) {
+    listContainer.removeChild(listContainer.firstChild);
+  }
+  if (toDoArray.length === 0) {
+    const placeholderElement = document.createElement('li');
+    placeholderElement.classList.add('placeholder-item');
+    placeholderElement.textContent = 'no items in todo list';
+
+    listContainer.appendChild(placeholderElement);
+    return;
+  }
+  listContainer.removeChild(document.querySelector('.placeholder-item'));
   toDoArray?.forEach((toDoItem) => {
     const toDoElement = createToDoElement(toDoItem);
     listContainer?.append(toDoElement);

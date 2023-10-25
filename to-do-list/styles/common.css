@@ -60,6 +60,13 @@ button {
 .button:active {
   scale: 1.01;
 }
+.button:disabled {
+  cursor: not-allowed;
+  background-color: var(--list-item-dark);
+  color: var(--text-color-dark);
+  scale: 1;
+  transition: none;
+}
 .checkbox {
   --inner-shadow: inset 0 0 0 0.2rem var(--text-color-light);
   --size: 1.5rem;
