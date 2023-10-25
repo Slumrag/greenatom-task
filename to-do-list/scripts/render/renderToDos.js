@@ -1,23 +1,25 @@
 export function renderToDos(toDoArray, listContainer) {
-  // console.log(listContainer.children.length);
-  // while (listContainer.children.length > 0) {
-  //   listContainer.firstChild.remove();
-  // }
+  // console.log(listContainer.children);
+  while (listContainer.children.length > 0) {
+    listContainer.lastChild.remove();
+  }
   if (toDoArray.length === 0) {
-    const placeholderElement = document.createElement('li');
-    placeholderElement.classList.add('placeholder-item');
-    placeholderElement.textContent = 'no items in todo list';
+    const placeholderElement = createPlaceholder();
 
     listContainer.appendChild(placeholderElement);
     return;
   }
-  listContainer.removeChild(document.querySelector('.placeholder-item'));
+  document.querySelector('.placeholder-item')?.remove();
   toDoArray?.forEach((toDoItem) => {
     const toDoElement = createToDoElement(toDoItem);
     listContainer?.append(toDoElement);
   });
 }
-
+function createPlaceholder() {
+  document.createElement('li');
+  placeholderElement.classList.add('placeholder-item');
+  placeholderElement.textContent = 'no items in todo list';
+}
 export function createToDoElement(toDOItem) {
   const toDoElement = document.createElement('li');
   toDoElement.className = 'list__item todo-item';

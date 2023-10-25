@@ -22,6 +22,5 @@ export async function addToDo(toDo) {
   }
   const data = await response.json();
   const user = await loadUser(data.userId);
-  console.log(user);
   return { ...data, name: user.name };
 }
