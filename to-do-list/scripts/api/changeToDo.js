@@ -4,7 +4,6 @@ export async function changeToDo(toDo) {
   const body = {
     completed: toDo.completed,
   };
-  console.log(toDoURI);
   const checkbox = document.getElementById(toDo.id);
   checkbox.classList.add('pending');
   const response = await fetch(toDoURI, {
