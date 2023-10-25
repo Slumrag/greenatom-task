@@ -1,5 +1,6 @@
 import { addToDo } from './api/addToDo.js';
 import { changeToDo } from './api/changeToDo.js';
+import { deleteToDo } from './api/deleteToDo.js';
 import { loadToDos } from './api/loadToDos.js';
 import { loadUsers } from './api/loadUsers.js';
 import { renderToDos } from './render/renderToDos.js';
@@ -32,13 +33,13 @@ document.addEventListener('input', (e) => {
   const isValid = title.checkValidity() && +userId.value !== 0;
   submitButton.disabled = !isValid;
 });
+
 // change checkbox state
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.todo-item')) return;
   if (!e.target.closest('.checkbox')) return;
 
   const checkbox = e.target;
-
   e.preventDefault();
   // console.log(checkbox.checked);
   changeToDo({ id: checkbox.id, complete: checkbox.checked })
@@ -52,6 +53,14 @@ document.addEventListener('click', (e) => {
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.todo-item')) return;
   if (!e.target.closest('.close')) return;
+  const checkbox = e.target.parentElement.querySelector('.checkbox');
+  console.log(checkbox);
+  deleteToDo({ id: checkbox.id })
+    .then(() => {
+      checkbox.parentElement.parentElement.removeChild(checkbox.parentElement);
+    })
+    .catch((err) => alert(err))
+    .finally(() => checkbox?.parentElement?.classList?.remove('pending'));
 });
 loadData()
   .then(renderData)
