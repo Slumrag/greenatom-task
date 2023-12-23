@@ -10,6 +10,11 @@ const App: FC = () => {
         <img src={pngLogo} alt='png' width={70} />
         <img src={svgLogo} alt='svg' width={70} />
       </div>
+      <p>
+        {process.env.NODE_ENV == 'development' && 'We are in dev environment'}
+        {process.env.NODE_ENV == 'production' && 'We are in prod environment'}
+      </p>
+      <p>NODE_ENV={process.env.NODE_ENV}</p>
     </div>
   );
 };
