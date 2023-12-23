@@ -17,6 +17,9 @@ const App: FC = () => {
         {process.env.NODE_ENV == 'production' && 'We are in prod environment'}
       </p>
       <p>NODE_ENV={process.env.NODE_ENV}</p>
+
+      <p>EXAMPLE={process.env.EXAMPLE}</p>
+      <p>EXAMPLE_MODE_DEPENDANT={process.env.EXAMPLE_MODE_DEPENDANT}</p>
       <Button></Button>
     </div>
   );

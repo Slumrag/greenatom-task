@@ -1,6 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+
 const resolvePath = (p) => path.resolve(__dirname, '..', p);
 
 module.exports = {
@@ -48,5 +50,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: resolvePath('./src/index.html'),
     }),
+    new Dotenv(),
   ],
 };

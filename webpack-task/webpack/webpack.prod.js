@@ -1,11 +1,13 @@
-const webpack = require('webpack');
+const path = require('path');
+const Dotenv = require('dotenv-webpack');
+const resolvePath = (p) => path.resolve(__dirname, '..', p);
 
 module.exports = {
   mode: 'production',
   devtool: 'source-map',
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.BASE_URL': JSON.stringify('http://example.com'),
+    new Dotenv({
+      path: resolvePath(`./.env.production`),
     }),
   ],
 };
