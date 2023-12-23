@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import './styles.css';
+import './styles/styles.css';
 import pngLogo from './images/logo.png';
 import svgLogo from './images/react-2.svg';
+import { Button } from '@ui/Button';
+
 const App: FC = () => {
   return (
     <div>
@@ -15,6 +17,7 @@ const App: FC = () => {
         {process.env.NODE_ENV == 'production' && 'We are in prod environment'}
       </p>
       <p>NODE_ENV={process.env.NODE_ENV}</p>
+      <Button></Button>
     </div>
   );
 };

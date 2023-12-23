@@ -1,10 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const resolvePath = (p) => path.resolve(__dirname, '..', p);
+
 module.exports = {
-  entry: path.resolve(__dirname, '..', './src/index.tsx'),
+  entry: resolvePath('./src/index.tsx'),
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
+    plugins: [
+      new TsconfigPathsPlugin({
+        extensions: ['.tsx', '.ts', '.js'],
+        configFile: resolvePath('tsconfig.json'),
+      }),
+    ],
   },
+
   module: {
     rules: [
       {
@@ -31,12 +41,12 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, '..', './build'),
+    path: resolvePath('./build'),
     filename: 'bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '..', './src/index.html'),
+      template: resolvePath('./src/index.html'),
     }),
   ],
 };
