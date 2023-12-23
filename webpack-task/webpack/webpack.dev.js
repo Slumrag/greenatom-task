@@ -8,4 +8,8 @@ module.exports = {
       'process.env.BASE_URL': JSON.stringify('http://localhost:8001'),
     }),
   ],
+  devServer: {
+    // static: './dist',
+    hot: true,
+  },
 };
