@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-
+const CopyPlugin = require('copy-webpack-plugin');
 const resolvePath = (p) => path.resolve(__dirname, '..', p);
 
 module.exports = {
@@ -16,7 +16,26 @@ module.exports = {
       }),
     ],
   },
-
+  output: {
+    path: resolvePath('./build'),
+    filename: '[name].bundle.[hash].js',
+    clean: true,
+    assetModuleFilename: 'assets/[name][ext]',
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: resolvePath('./public/index.html'),
+    }),
+    new Dotenv(),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: resolvePath('public/assets'),
+          to: 'assets',
+        },
+      ],
+    }),
+  ],
   module: {
     rules: [
       {
@@ -31,6 +50,9 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+        generator: {
+          filename: 'styles/[name][ext]',
+        },
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
@@ -42,14 +64,4 @@ module.exports = {
       },
     ],
   },
-  output: {
-    path: resolvePath('./build'),
-    filename: 'bundle.js',
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: resolvePath('./src/index.html'),
-    }),
-    new Dotenv(),
-  ],
 };
